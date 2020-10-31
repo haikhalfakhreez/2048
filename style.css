@@ -1,16 +1,73 @@
-.grid {
+body {
+    margin: 0;
+    background-color: #F3F3F3;
+    overflow-x: hidden;
+}
+  
+*, *::before, *::after {
+    font-family: 'Rubik', sans-serif;;
+    box-sizing: border-box;
+}
+
+.grid-container {
     display: flex;
-    flex-wrap: wrap;
-    width: 400px;
-    height: 400px;
-    background-color: blue;
+    justify-content: center;
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    background-color: #999;
+    grid-template-rows: repeat(4, 100px);
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    border: 10px solid #999;
+    border-radius: .3rem;
 }
 
 .grid div {
-    width: 100px;
-    height: 100px;
-    background-color: yellow;
-    font-size: 60px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
     font-weight: bold;
+    border-radius: .2rem;
+    background-color: #e3e3e3;
+    color:#444;
+}
+
+/* XS */
+@media screen and (max-width:575px) {
+    .grid {
+        grid-template-rows: repeat(4, 17vw);
+        grid-template-columns: repeat(4, 17vw);
+        grid-gap: 1.7vw;
+        border: 1.7vw solid #999;
+        border-radius: .5vw;
+    }
+    
+    .grid div {
+        font-size: 7.6vw;
+        border-radius: .5vw;
+    }
+}
+
+/* Small */
+@media screen and (min-width:576px) and (max-width:767px) {
+    
+}
+
+/* Medium */
+@media screen and (min-width:768px) and (max-width:991px) {
+    
+}
+
+/* Large */
+@media screen and (min-width:992px) and (max-width:1199px) {
+    
+}
+
+/* XL */
+@media screen and (min-width:1200px) {
+    
 }
