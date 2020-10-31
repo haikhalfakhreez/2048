@@ -1,4 +1,4 @@
-# The Classic 2048 Game!
+# The Classic **2048** Game!
 
 This game codes were inspired from **Ania Kubów** with some modifications to make it my own, so definitely check out her YouTube channel.
 
