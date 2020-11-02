@@ -1,7 +1,7 @@
 body {
     margin: 0;
     background-color: #F3F3F3;
-    overflow-x: hidden;
+    color: #444;
 }
   
 *, *::before, *::after {
@@ -9,65 +9,122 @@ body {
     box-sizing: border-box;
 }
 
-.grid-container {
+.parent-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 450px;
+    margin: auto;
+}
+
+.info-container {
+    position: relative;
+    height: 160px;
     width: 100%;
+}
+
+.title-container {
+    position: absolute;
+    left: 0;
+    top: 20%;
+}
+
+.title-container h1 {
+    margin: 0;
+    padding: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    font-size: 70px;
+    font-family: 'Kanit', sans-serif;
+    line-height: 65px;
+}
+
+.score-container {
+    position: absolute;
+    top: 20%;
+    right: 0;
+    background-color: darkred;
+    border-radius: .3rem;
+    color: white;
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    width: 85px;
+}
+
+.score-container div {
+    margin-bottom: 5px;
+}
+
+.score-title {
+    color: #c8c8c8;
+}
+
+.show-result {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 .grid {
     display: grid;
-    background-color: #999;
+    background-color: #bdafa2;
     grid-template-rows: repeat(4, 100px);
     grid-template-columns: repeat(4, 100px);
     grid-gap: 10px;
-    border: 10px solid #999;
+    border: 10px solid #bdafa2;
     border-radius: .3rem;
+    margin-top: 10px;
 }
 
-.grid div {
+.grid article {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 2.8rem;
     font-weight: bold;
     border-radius: .2rem;
-    background-color: #e3e3e3;
+    background-color: rgba(198, 188, 178, 1);
     color:#444;
 }
 
+
 /* XS */
-@media screen and (max-width:575px) {
+@media screen and (max-width:500px) {
+    * {
+        font-size: 14px;
+    }
+
+    .parent-container {
+        width: 315px;
+    }
+
+    .title-container h1 {
+        font-size: 55px;
+        line-height: 55px;
+    }
+
+    .score-container {
+        height: 55px;
+        width: 75px;
+    }
+    
     .grid {
-        grid-template-rows: repeat(4, 17vw);
-        grid-template-columns: repeat(4, 17vw);
-        grid-gap: 1.7vw;
-        border: 1.7vw solid #999;
-        border-radius: .5vw;
+        grid-template-rows: repeat(4, 70px);
+        grid-template-columns: repeat(4, 70px);
+        grid-gap: 7px;
+        border: 7px solid #bdafa2;
+        border-radius: .2rem;
     }
     
-    .grid div {
-        font-size: 7.6vw;
-        border-radius: .5vw;
+    .grid article {
+        font-size: 2rem;
+        border-radius: .15rem;
     }
-}
-
-/* Small */
-@media screen and (min-width:576px) and (max-width:767px) {
-    
-}
-
-/* Medium */
-@media screen and (min-width:768px) and (max-width:991px) {
-    
-}
-
-/* Large */
-@media screen and (min-width:992px) and (max-width:1199px) {
-    
-}
-
-/* XL */
-@media screen and (min-width:1200px) {
-    
 }
