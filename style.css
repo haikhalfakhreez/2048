@@ -126,5 +126,7 @@ body {
     .grid article {
         font-size: 2rem;
         border-radius: .15rem;
+        user-select: none;
+        -webkit-user-select: none;
     }
 }
