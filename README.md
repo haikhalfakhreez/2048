@@ -14,6 +14,7 @@ This game codes were inspired from **Ania Kubów** with some modifications to ma
 - New JavaScript function
     - Change color tiles based on its number
     - Make zeros invisible
+    - **UPDATE**: Fixed [bug no.1](#bugs) where random no.2 will still generated even though there's no move left for a particular direction. Added the JS functionality using array push() and splice() methods. 
 
 ### Skills used in making of this game:
 
@@ -27,7 +28,7 @@ There's some game logic that doesn't really follow the vanilla game rules ([see 
 
 #### Bugs:
 
-1. Let say we only use the right direction key; the game will continue to generate new number 2 randomly even though the tiles are all placed to one side and there's no possible combination can occur. Vanilla game logic requires the tiles to be moved in other direction first before creating new number 2.
+1. ~~Let say we only use the right direction key; the game will continue to generate new number 2 randomly even though the tiles are all placed to one side and there's no possible combination can occur. Vanilla game logic requires the tiles to be moved in other direction first before creating new number 2.~~ **FIXED**
 2. Win/lose logic is not correct. The game will end when there's no zeros anymore. 
 
     **Correct logic**: game will end when there's no possible combination can occur, not when there's no zero anymore.
