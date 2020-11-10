@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (squares[randomNumber].innerHTML == 0) {
             squares[randomNumber].innerHTML = 2;
             checkForGameOver();
-        }else generate ()
+        }
     }
 
     // swipe right
@@ -157,42 +157,87 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     document.addEventListener('keyup', control);
+    
+    var oldArr = [];
+    var newArr = [];
 
+    function defineOld() {
+        for (let i = 0; i < 16; i++) {
+            oldArr.push(squares[i].innerHTML);
+        }
+    }
+
+    function removeOld() {
+        oldArr.splice(0, oldArr.length);
+    }
+
+    function defineNew() {
+        for (let i = 0; i < 16; i++) {
+            newArr.push(squares[i].innerHTML);
+        }
+    }
+
+    function removeNew() {
+        newArr.splice(0, newArr.length);
+    }
+
+    function compareOldNew(value, index) {
+        return value === newArr[index];
+    }
+
+    function determinedGenerate() {
+        if (oldArr.every(compareOldNew) === false) {
+            generate();
+            invisibleZeros();
+            colorTiles();
+        }else if (oldArr.every(compareOldNew) === true){
+            invisibleZeros();
+            colorTiles();
+        }
+    }
     
     function keyRight () {
+        defineOld();
         moveRight();
         combineRow();
         moveRight();
-        generate();
-        invisibleZeros();
-        colorTiles();
+        defineNew();
+        determinedGenerate();
+        removeOld();
+        removeNew();
     }
 
     function keyLeft() {
+        defineOld();
         moveLeft();
         combineRow();
         moveLeft();
-        generate();
-        invisibleZeros();
-        colorTiles();
+        defineNew();
+        determinedGenerate();
+        removeOld();
+        removeNew();
     }
 
     function keyDown() {
+        defineOld();
         moveDown();
         combineColumn();
         moveDown();
-        generate();
-        invisibleZeros();
-        colorTiles();
+        defineNew();
+        determinedGenerate();
+        removeOld();
+        removeNew();
     }
 
     function keyUp() {
+        defineOld();
         moveUp();
         combineColumn();
         moveUp();
-        generate();
-        invisibleZeros();
-        colorTiles();
+        defineNew();
+        determinedGenerate();
+        removeOld();
+        removeNew();
     }
 
     // check for the number 2048 in the squares to win
