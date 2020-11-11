@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     const gridDisplay = document.querySelector('.grid');
     const scoreDisplay = document.getElementById('score');
     const resultDisplay = document.getElementById('result');
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         generate();
         generate();
-        invisibleZeros();
         colorTiles();
     }
     createBoard();
@@ -26,9 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
         let randomNumber = Math.floor(Math.random() * squares.length)
         if (squares[randomNumber].innerHTML == 0) {
             squares[randomNumber].innerHTML = 2;
+            squares[randomNumber].style.backgroundColor = "#eee4da";
+            squares[randomNumber].style.color = "#776e65";
+            squares[randomNumber].style.animation = "animateTwo .3s both";
+
             checkForGameOver();
         }
     }
+
+    function removeAnim() {
+        for (let i = 0; i < 16; i++) {
+            squares[i].style.animation = null;
+        }
+    }
+    
 
     // swipe right
     function moveRight() {
@@ -158,27 +168,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('keyup', control);
     
-    var oldArr = [];
-    var newArr = [];
+
+    //dont generate if no change
+    var oldArr = null;
+    var newArr = null;
 
     function defineOld() {
+        oldArr = [];
         for (let i = 0; i < 16; i++) {
             oldArr.push(squares[i].innerHTML);
         }
     }
 
-    function removeOld() {
-        oldArr.splice(0, oldArr.length);
-    }
-
     function defineNew() {
+        newArr = [];
         for (let i = 0; i < 16; i++) {
             newArr.push(squares[i].innerHTML);
         }
-    }
-
-    function removeNew() {
-        newArr.splice(0, newArr.length);
     }
 
     function compareOldNew(value, index) {
@@ -188,56 +194,56 @@ document.addEventListener('DOMContentLoaded', () => {
     function determinedGenerate() {
         if (oldArr.every(compareOldNew) === false) {
             generate();
-            invisibleZeros();
             colorTiles();
-        }else if (oldArr.every(compareOldNew) === true){
-            invisibleZeros();
+        }else {
             colorTiles();
         }
+
+        // reset values
+        oldArr = null;
+        newArr = null;
     }
     
+
+    // direction action
     function keyRight () {
+        removeAnim();
         defineOld();
         moveRight();
         combineRow();
         moveRight();
         defineNew();
         determinedGenerate();
-        removeOld();
-        removeNew();
     }
 
     function keyLeft() {
+        removeAnim();
         defineOld();
         moveLeft();
         combineRow();
         moveLeft();
         defineNew();
         determinedGenerate();
-        removeOld();
-        removeNew();
     }
 
     function keyDown() {
+        removeAnim();
         defineOld();
         moveDown();
         combineColumn();
         moveDown();
         defineNew();
         determinedGenerate();
-        removeOld();
-        removeNew();
     }
 
     function keyUp() {
+        removeAnim();
         defineOld();
         moveUp();
         combineColumn();
         moveUp();
         defineNew();
         determinedGenerate();
-        removeOld();
-        removeNew();
     }
 
     // check for the number 2048 in the squares to win
@@ -264,22 +270,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // make zeros invisible
-    function invisibleZeros() {
-        for (let i = 0; i < 16; i++) {
-            if (squares[i].innerHTML == 0) {
-                squares[i].style.color = "rgba(198, 188, 178, 1)";
-            }else if (squares[i].innerHTML !== 0) {
-                squares[i].style.color = "#444";
-            }
-        }
-    }
-
     // color tiles according to number
     function colorTiles() {
         for (let i = 0; i < 16; i++) {
             if (squares[i].innerHTML == 0) {
                 squares[i].style.backgroundColor = "rgba(198, 188, 178, 1)";
+                squares[i].style.color = "rgba(198, 188, 178, 1)";
             }else if (squares[i].innerHTML == 2) {
                 squares[i].style.backgroundColor = "#eee4da";
                 squares[i].style.color = "#776e65";
@@ -320,6 +316,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // animation to color tiles
+    function colorAnimation() {
+
+    }
+
+
     //SWIPE EVENT
     gridDisplay.addEventListener('touchstart', handleTouchStart, false);        
     gridDisplay.addEventListener('touchmove', handleTouchMove, false);
@@ -350,15 +352,15 @@ document.addEventListener('DOMContentLoaded', () => {
         var yDiff = yDown - yUp;
 
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) { /*most significant*/
-            if ( xDiff > 0 ) {
+            if ( xDiff > 10 ) {
                 keyLeft(); /* left swipe */ 
-            } else {
+            } else if ( xDiff < -10 ) {
                 keyRight(); /* right swipe */
             }                       
         } else {
-            if ( yDiff > 0 ) {
+            if ( yDiff > 10 ) {
                 keyUp(); /* up swipe */ 
-            } else { 
+            } else if ( yDiff < -10 ) { 
                 keyDown(); /* down swipe */
             }                                                                 
         }

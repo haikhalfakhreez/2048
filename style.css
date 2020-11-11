@@ -94,6 +94,10 @@ body {
     color:#444;
 }
 
+@keyframes animateTwo {
+    from {transform: scale(0);}
+    to {transform: scale(1);}
+}
 
 /* XS */
 @media screen and (max-width:500px) {
