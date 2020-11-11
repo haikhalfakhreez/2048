@@ -30,6 +30,8 @@ window.addEventListener('DOMContentLoaded', () => {
             squares[randomNumber].style.animation = "animateTwo .3s both";
 
             checkForGameOver();
+        }else {
+            generate();
         }
     }
 
@@ -212,6 +214,7 @@ window.addEventListener('DOMContentLoaded', () => {
         moveRight();
         combineRow();
         moveRight();
+        colorTiles();
         defineNew();
         determinedGenerate();
     }
@@ -222,6 +225,7 @@ window.addEventListener('DOMContentLoaded', () => {
         moveLeft();
         combineRow();
         moveLeft();
+        colorTiles();
         defineNew();
         determinedGenerate();
     }
@@ -232,6 +236,7 @@ window.addEventListener('DOMContentLoaded', () => {
         moveDown();
         combineColumn();
         moveDown();
+        colorTiles();
         defineNew();
         determinedGenerate();
     }
@@ -242,6 +247,7 @@ window.addEventListener('DOMContentLoaded', () => {
         moveUp();
         combineColumn();
         moveUp();
+        colorTiles();
         defineNew();
         determinedGenerate();
     }
@@ -317,9 +323,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     // animation to color tiles
-    function colorAnimation() {
-
-    }
 
 
     //SWIPE EVENT

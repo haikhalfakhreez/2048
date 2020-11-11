@@ -84,6 +84,7 @@ body {
 }
 
 .grid article {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,10 +95,32 @@ body {
     color:#444;
 }
 
+/* 
+right - 0 50
+left - 100 50
+down - 50 0
+up - 50 100
+*/
+/* @keyframes animateX {
+    from {transform: scaleX(0); width: 0%;}
+    to {transform: scaleX(1); width: 100%;}
+}
+@keyframes animateY {
+    from {transform: scaleY(0);}
+    to {transform: scaleY(1);}
+}
 @keyframes animateTwo {
     from {transform: scale(0);}
     to {transform: scale(1);}
 }
+@keyframes animateLeft {
+    from {width: 0;}
+    to {width: 100;}
+}
+@keyframes animateCombine {
+    50% {transform: scale(1.2);}
+} */
+
 
 /* XS */
 @media screen and (max-width:500px) {
