@@ -9,19 +9,20 @@ This game codes were inspired from **Ania Kubów** with some modifications to ma
 
 ## What I added/changed on my own:
 
-- Styling using CSS
-- Responsive design
-- New JavaScript function
-    - Change color tiles based on its number
-    - Make zeros invisible
-    - **UPDATE**: Fixed [bug no.1](#bugs) where random number 2 will still be generated even though there's no move left for a particular direction. Added the JS functionality using array ```push()``` and ```splice()``` methods. 
+- Styling using CSS.
+- Responsive design.
+- New JavaScript function:
+    - Added touch functionality for mobile users.
+    - Change color tiles based on its number.
+    - Make zeros invisible.
+    - **UPDATE**: Fixed [bug no.1](#bugs) where random number 2 will still be generated even though there's no move left for a particular direction. Added the JS functionality using array ```push()```, ```every()```, and ```splice()``` methods. 
 
 ### Skills used in making of this game:
 
-- Using **JavaScript** to make game logic - purely using JS
-- CSS3 - inlcude google fonts integration
-- HTML5
-- Git & GitHub
+- Using **JavaScript** to make game logic - purely using JS.
+- CSS3 - inlcude google fonts integration.
+- HTML5.
+- Git & GitHub.
 
 #### Flaws:
 There's some game logic that doesn't really follow the vanilla game rules ([see notes on bugs](#bugs)). However, it requires a highly advanced understanding on JavaScript to fix. Until I have some more skill on JS and other technologies (frameworks etc.), this game will remain as it is.
