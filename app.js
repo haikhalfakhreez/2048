@@ -355,15 +355,15 @@ window.addEventListener('DOMContentLoaded', () => {
         var yDiff = yDown - yUp;
 
         if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) { /*most significant*/
-            if ( xDiff > 10 ) {
+            if ( xDiff > 20 ) {
                 keyLeft(); /* left swipe */ 
-            } else if ( xDiff < -10 ) {
+            } else if ( xDiff < -20 ) {
                 keyRight(); /* right swipe */
             }                       
         } else {
-            if ( yDiff > 10 ) {
+            if ( yDiff > 20 ) {
                 keyUp(); /* up swipe */ 
-            } else if ( yDiff < -10 ) { 
+            } else if ( yDiff < -20 ) { 
                 keyDown(); /* down swipe */
             }                                                                 
         }
